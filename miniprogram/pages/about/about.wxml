@@ -1,0 +1,84 @@
+<!-- about/about.wxml -->
+<view class="container">
+    <!-- 应用信息头部 -->
+    <view class="app-header">
+        <view class="app-logo">🏃‍♂️</view>
+        <view class="app-name">{{appInfo.name}}</view>
+        <view class="app-version">版本 {{appInfo.version}}</view>
+    </view>
+    <!-- 应用描述 -->
+    <view class="section">
+        <view class="section-title">应用介绍</view>
+        <view class="description">{{appInfo.description}}</view>
+    </view>
+    <!-- 主要功能 -->
+    <view class="section">
+        <view class="section-title">主要功能</view>
+        <view class="features-list">
+            <view class="feature-item" wx:for="{{appInfo.features}}" wx:key="*this">
+                <view class="feature-icon">✓</view>
+                <view class="feature-text">{{item}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 团队信息 -->
+    <view class="section">
+        <view class="section-title">开发团队</view>
+        <view class="team-info" wx:for="{{teamInfo}}" wx:key="name">
+            <view class="team-name">{{item.name}}</view>
+            <view class="team-description">{{item.description}}</view>
+            <view class="team-members">
+                <view class="member-item" wx:for="{{item.members}}" wx:key="name" wx:for-item="member">
+                    <view class="member-name">{{member.name}}</view>
+                    <view class="member-role">{{member.role}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 联系方式 -->
+    <view class="section">
+        <view class="section-title">联系我们</view>
+        <view class="contact-list">
+            <view class="contact-item" bindtap="copyEmail">
+                <view class="contact-icon">📧</view>
+                <view class="contact-info">
+                    <view class="contact-label">邮箱</view>
+                    <view class="contact-value">{{appInfo.contact.email}}</view>
+                </view>
+                <view class="contact-action">复制</view>
+            </view>
+            <view class="contact-item" bindtap="copyWebsite">
+                <view class="contact-icon">🌐</view>
+                <view class="contact-info">
+                    <view class="contact-label">官网</view>
+                    <view class="contact-value">{{appInfo.contact.website}}</view>
+                </view>
+                <view class="contact-action">复制</view>
+            </view>
+            <view class="contact-item" bindtap="callPhone">
+                <view class="contact-icon">📞</view>
+                <view class="contact-info">
+                    <view class="contact-label">客服电话</view>
+                    <view class="contact-value">{{appInfo.contact.phone}}</view>
+                </view>
+                <view class="contact-action">拨打</view>
+            </view>
+        </view>
+    </view>
+    <!-- 分享应用 -->
+    <view class="section">
+        <view class="section-title">分享应用</view>
+        <view class="share-content">
+            <view class="share-text">觉得好用？分享给朋友吧！</view>
+            <button class="share-btn" open-type="share">
+                <view class="share-icon">📤</view>
+                <view class="share-text">分享给朋友</view>
+            </button>
+        </view>
+    </view>
+    <!-- 版权信息 -->
+    <view class="footer">
+        <view class="copyright">© 2025 运动健康. All rights reserved.</view>
+        <view class="powered-by">Powered by WeChat Mini Program</view>
+    </view>
+</view>

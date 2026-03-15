@@ -1,0 +1,353 @@
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 导航栏 */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10rpx);
+}
+
+.nav-left {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-icon {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.nav-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nav-right {
+  width: 60rpx;
+}
+
+/* 主要内容 */
+.content {
+  flex: 1;
+  padding: 40rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo区域 */
+.logo-section {
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20rpx;
+}
+
+.app-name {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+.app-desc {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 表单切换 */
+.form-switch {
+  display: flex;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50rpx;
+  padding: 8rpx;
+  margin-bottom: 40rpx;
+}
+
+.switch-btn {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.switch-btn.active {
+  background: #fff;
+  color: #667eea;
+  font-weight: 600;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 表单容器 */
+.form-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.1);
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #667eea;
+  background: #fff;
+  box-shadow: 0 0 0 4rpx rgba(102, 126, 234, 0.1);
+}
+
+.input-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  color: #6c757d;
+}
+
+.form-input {
+  flex: 1;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #adb5bd;
+}
+
+.password-toggle {
+  padding: 10rpx;
+  cursor: pointer;
+}
+
+.toggle-icon {
+  font-size: 28rpx;
+  color: #6c757d;
+}
+
+/* 表单操作 */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30rpx;
+}
+
+.forgot-password {
+  font-size: 26rpx;
+  color: #667eea;
+  text-decoration: underline;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin-bottom: 20rpx;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.3);
+}
+
+.register-btn {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.3);
+}
+
+.register-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn[disabled] {
+  background: #ccc;
+  box-shadow: none;
+  transform: none;
+}
+
+/* 其他登录方式 */
+.other-login {
+  margin-top: 30rpx;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background: #e9ecef;
+}
+
+.divider-text {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  color: #6c757d;
+}
+
+.wechat-btn {
+  width: 100%;
+  height: 80rpx;
+  background: #07c160;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.wechat-btn:active {
+  transform: translateY(2rpx);
+  background: #06ad56;
+}
+
+.wechat-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.wechat-text {
+  font-weight: 500;
+}
+
+/* 密码提示 */
+.password-tips {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background: #e8f5e8;
+  border-radius: 8rpx;
+  border-left: 4rpx solid #4caf50;
+}
+
+.tips-text {
+  font-size: 24rpx;
+  color: #2e7d32;
+  line-height: 1.4;
+}
+
+/* 底部提示 */
+.bottom-tips {
+  text-align: center;
+  margin-top: auto;
+  padding: 20rpx 0;
+}
+
+.tips-text {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.link-text {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .content {
+    padding: 30rpx 20rpx;
+  }
+
+  .form-container {
+    padding: 30rpx 20rpx;
+  }
+
+  .app-name {
+    font-size: 40rpx;
+  }
+
+  .app-desc {
+    font-size: 24rpx;
+  }
+}
+
+/* 加载状态 */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* 错误状态 */
+.input-wrapper.error {
+  border-color: #f44336;
+  background: #ffebee;
+}
+
+.error-message {
+  font-size: 24rpx;
+  color: #f44336;
+  margin-top: 8rpx;
+  padding-left: 20rpx;
+}
+
+/* 成功状态 */
+.input-wrapper.success {
+  border-color: #4caf50;
+  background: #e8f5e8;
+}

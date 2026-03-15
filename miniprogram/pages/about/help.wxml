@@ -1,0 +1,93 @@
+<!-- about/help.wxml -->
+<view class="container">
+    <!-- 常见问题 -->
+    <view class="section">
+        <view class="section-title">常见问题</view>
+        <view class="faq-list">
+            <view class="faq-item" wx:for="{{faqs}}" wx:key="question" data-index="{{index}}" bindtap="toggleFaq">
+                <view class="faq-question">
+                    <view class="faq-text">{{item.question}}</view>
+                    <view class="faq-arrow {{item.expanded ? 'expanded' : ''}}">▼</view>
+                </view>
+                <view class="faq-answer {{item.expanded ? 'expanded' : ''}}">{{item.answer}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 反馈表单 -->
+    <view class="section">
+        <view class="section-title">意见反馈</view>
+        <view class="feedback-form">
+            <!-- 反馈类型选择 -->
+            <view class="form-group">
+                <view class="form-label">反馈类型</view>
+                <view class="feedback-types">
+                    <view class="feedback-type-item {{selectedType === item.value ? 'active' : ''}}" wx:for="{{feedbackTypes}}" wx:key="value" data-type="{{item.value}}" bindtap="selectFeedbackType">
+                        <view class="type-icon">{{item.icon}}</view>
+                        <view class="type-name">{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 反馈内容 -->
+            <view class="form-group">
+                <view class="form-label">
+                    反馈内容
+                    <text class="required">*</text>
+                </view>
+                <textarea class="feedback-textarea" placeholder="请详细描述您遇到的问题或建议..." value="{{feedbackContent}}" bindinput="onFeedbackInput" maxlength="500"></textarea>
+                <view class="char-count">{{feedbackContent.length}}/500</view>
+            </view>
+            <!-- 联系方式 -->
+            <view class="form-group">
+                <view class="form-label">联系方式（选填）</view>
+                <input class="contact-input" placeholder="邮箱、微信或手机号，方便我们回复您" value="{{contactInfo}}" bindinput="onContactInput" />
+            </view>
+            <!-- 操作按钮 -->
+            <view class="form-actions">
+                <button class="btn btn-secondary" bindtap="clearFeedback">清空</button>
+                <button class="btn btn-primary" bindtap="submitFeedback" loading="{{submitting}}">
+                    {{submitting ? '提交中...' : '提交反馈'}}
+                </button>
+            </view>
+        </view>
+    </view>
+    <!-- 联系方式 -->
+    <view class="section">
+        <view class="section-title">联系我们</view>
+        <view class="contact-list">
+            <view class="contact-item" bindtap="copyEmail">
+                <view class="contact-icon">📧</view>
+                <view class="contact-info">
+                    <view class="contact-label">客服邮箱</view>
+                    <view class="contact-value">support@fitnessapp.com</view>
+                </view>
+                <view class="contact-action">复制</view>
+            </view>
+            <view class="contact-item" bindtap="callPhone">
+                <view class="contact-icon">📞</view>
+                <view class="contact-info">
+                    <view class="contact-label">客服电话</view>
+                    <view class="contact-value">400-123-4567</view>
+                </view>
+                <view class="contact-action">拨打</view>
+            </view>
+        </view>
+    </view>
+    <!-- 使用提示 -->
+    <view class="section">
+        <view class="section-title">使用提示</view>
+        <view class="tips-list">
+            <view class="tip-item">
+                <view class="tip-icon">💡</view>
+                <view class="tip-content">如果遇到问题，请先查看常见问题，大部分问题都能找到答案。</view>
+            </view>
+            <view class="tip-item">
+                <view class="tip-icon">📝</view>
+                <view class="tip-content">提交反馈时，请尽可能详细地描述问题，这样我们能更快地帮助您。</view>
+            </view>
+            <view class="tip-item">
+                <view class="tip-icon">⏰</view>
+                <view class="tip-content">我们会在1-3个工作日内回复您的反馈，请耐心等待。</view>
+            </view>
+        </view>
+    </view>
+</view>

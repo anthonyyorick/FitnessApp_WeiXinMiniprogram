@@ -1,0 +1,159 @@
+<!-- health/goals.wxml -->
+<view class="container">
+    <view class="header">
+        <view class="title">健康目标</view>
+        <view class="subtitle">设置你的健康目标，监测身体状况</view>
+    </view>
+    <!-- 目标概览 -->
+    <view class="section">
+        <view class="section-header">
+            <!-- <view class="section-title">目标概览</view> -->
+            <view class="action-buttons" wx:if="{{!editing}}">
+                <button class="btn btn-edit" bindtap="startEdit">编辑</button>
+                <button class="btn btn-reset" bindtap="resetGoals">重置</button>
+            </view>
+            <view class="action-buttons" wx:if="{{editing}}">
+                <button class="btn btn-cancel" bindtap="cancelEdit">取消</button>
+                <button class="btn btn-save" bindtap="saveGoals" loading="{{submitting}}">
+                    保存
+                </button>
+            </view>
+        </view>
+        <!-- 心率目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">❤️</view>
+                <view class="goal-info">
+                    <view class="goal-name">心率范围</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.heartRate.avg || '--'}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.heartRate.min}}-{{goals.heartRate.max}}</text>
+                        <text class="unit">bpm</text>
+                    </view>
+                </view>
+                <view class="goal-status" wx:if="{{currentProgress.heartRate.avg > 0}}" style="color: {{getStatusColor(checkHeartRateStatus(currentProgress.heartRate.avg))}}">
+                    {{getStatusText(checkHeartRateStatus(currentProgress.heartRate.avg))}}
+                </view>
+            </view>
+            <view class="goal-details" wx:if="{{currentProgress.heartRate.min > 0}}">
+                <text class="detail-text">
+                    最近记录：{{currentProgress.heartRate.min}}-{{currentProgress.heartRate.max}} bpm
+                </text>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <view class="input-row">
+                    <input class="input-field" type="number" placeholder="最低心率" value="{{goals.heartRate.min}}" data-field="heartRate.min" bindinput="onInput" />
+                    <text class="input-separator">-</text>
+                    <input class="input-field" type="number" placeholder="最高心率" value="{{goals.heartRate.max}}" data-field="heartRate.max" bindinput="onInput" />
+                </view>
+            </view>
+        </view>
+        <!-- 血压目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">🩺</view>
+                <view class="goal-info">
+                    <view class="goal-name">血压目标</view>
+                    <view class="goal-progress">
+                        <text class="current">
+                            {{currentProgress.bloodPressure.systolic || '--'}}/{{currentProgress.bloodPressure.diastolic || '--'}}
+                        </text>
+                        <text class="separator">/</text>
+                        <text class="target">
+                            {{goals.bloodPressure.systolic}}/{{goals.bloodPressure.diastolic}}
+                        </text>
+                        <text class="unit">mmHg</text>
+                    </view>
+                </view>
+                <view class="goal-status" wx:if="{{currentProgress.bloodPressure.systolic > 0}}" style="color: {{getStatusColor(checkBloodPressureStatus(currentProgress.bloodPressure.systolic, currentProgress.bloodPressure.diastolic))}}">
+                    {{getStatusText(checkBloodPressureStatus(currentProgress.bloodPressure.systolic, currentProgress.bloodPressure.diastolic))}}
+                </view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <view class="input-row">
+                    <input class="input-field" type="number" placeholder="收缩压" value="{{goals.bloodPressure.systolic}}" data-field="bloodPressure.systolic" bindinput="onInput" />
+                    <text class="input-separator">/</text>
+                    <input class="input-field" type="number" placeholder="舒张压" value="{{goals.bloodPressure.diastolic}}" data-field="bloodPressure.diastolic" bindinput="onInput" />
+                </view>
+            </view>
+        </view>
+        <!-- 睡眠目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">😴</view>
+                <view class="goal-info">
+                    <view class="goal-name">睡眠时长</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.sleep || '--'}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.sleep}}</text>
+                        <text class="unit">小时</text>
+                    </view>
+                </view>
+                <view class="goal-status" wx:if="{{currentProgress.sleep > 0}}" style="color: {{getStatusColor(checkSleepStatus(currentProgress.sleep))}}">
+                    {{getStatusText(checkSleepStatus(currentProgress.sleep))}}
+                </view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="digit" placeholder="设置目标睡眠时长" value="{{goals.sleep}}" data-field="sleep" bindinput="onInput" />
+            </view>
+        </view>
+        <!-- 体重目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">⚖️</view>
+                <view class="goal-info">
+                    <view class="goal-name">目标体重</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.weight || '--'}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.weight}}</text>
+                        <text class="unit">kg</text>
+                    </view>
+                </view>
+                <view class="goal-status" wx:if="{{currentProgress.bmi > 0}}" style="color: {{getStatusColor(checkBMIStatus(currentProgress.bmi))}}">
+                    {{getStatusText(checkBMIStatus(currentProgress.bmi))}}
+                </view>
+            </view>
+            <view class="goal-details" wx:if="{{currentProgress.bmi > 0}}">
+                <text class="detail-text">当前BMI：{{currentProgress.bmi}}</text>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="digit" placeholder="设置目标体重" value="{{goals.weight}}" data-field="weight" bindinput="onInput" />
+            </view>
+        </view>
+        <!-- BMI目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">📊</view>
+                <view class="goal-info">
+                    <view class="goal-name">目标BMI</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.bmi || '--'}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.bmi}}</text>
+                        <text class="unit"></text>
+                    </view>
+                </view>
+                <view class="goal-status" wx:if="{{currentProgress.bmi > 0}}" style="color: {{getStatusColor(checkBMIStatus(currentProgress.bmi))}}">
+                    {{getStatusText(checkBMIStatus(currentProgress.bmi))}}
+                </view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="digit" placeholder="设置目标BMI" value="{{goals.bmi}}" data-field="bmi" bindinput="onInput" />
+            </view>
+        </view>
+    </view>
+    <!-- 健康建议 -->
+    <view class="tips-section">
+        <view class="tips-title">💡 健康建议</view>
+        <view class="tips-content">
+            <view class="tip-item">• 心率正常范围：60-100次/分钟</view>
+            <view class="tip-item">• 血压正常范围：90-140/60-90 mmHg</view>
+            <view class="tip-item">• 成人睡眠建议：7-9小时/天</view>
+            <view class="tip-item">• BMI正常范围：18.5-24.0</view>
+            <view class="tip-item">• 定期监测，及时调整</view>
+        </view>
+    </view>
+</view>

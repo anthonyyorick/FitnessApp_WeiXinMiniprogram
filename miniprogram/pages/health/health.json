@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "健康指标",
+  "usingComponents": {
+    "ec-canvas": "/components/echarts/ec-canvas/ec-canvas"
+  }
+} 

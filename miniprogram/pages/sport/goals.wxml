@@ -1,0 +1,153 @@
+<!-- sport/goals.wxml -->
+<view class="container">
+    <view class="header">
+        <view class="title">运动目标</view>
+        <view class="subtitle">设置你的运动目标，追踪进度</view>
+    </view>
+    <!-- 目标概览 -->
+    <view class="section">
+        <view class="section-header">
+            <!-- <view class="section-title">目标概览</view> -->
+            <view class="action-buttons" wx:if="{{!editing}}">
+                <button class="btn btn-edit" bindtap="startEdit">编辑</button>
+                <button class="btn btn-reset" bindtap="resetGoals">重置</button>
+            </view>
+            <view class="action-buttons" wx:if="{{editing}}">
+                <button class="btn btn-cancel" bindtap="cancelEdit">取消</button>
+                <button class="btn btn-save" bindtap="saveGoals" loading="{{submitting}}">
+                    保存
+                </button>
+            </view>
+        </view>
+        <!-- 日步数目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">👣</view>
+                <view class="goal-info">
+                    <view class="goal-name">日步数</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.dailySteps}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.dailySteps}}</text>
+                        <text class="unit">步</text>
+                    </view>
+                </view>
+                <view class="goal-percent">
+                    {{getProgressPercent(currentProgress.dailySteps, goals.dailySteps)}}%
+                </view>
+            </view>
+            <view class="progress-bar">
+                <view class="progress-fill" style="width: {{getProgressPercent(currentProgress.dailySteps, goals.dailySteps)}}%; background-color: {{getProgressColor(getProgressPercent(currentProgress.dailySteps, goals.dailySteps))}};"></view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="number" placeholder="设置目标步数" value="{{goals.dailySteps}}" data-field="dailySteps" bindinput="onInput" />
+            </view>
+        </view>
+        <!-- 日距离目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">🏃</view>
+                <view class="goal-info">
+                    <view class="goal-name">日距离</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.dailyDistance}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.dailyDistance}}</text>
+                        <text class="unit">公里</text>
+                    </view>
+                </view>
+                <view class="goal-percent">
+                    {{getProgressPercent(currentProgress.dailyDistance, goals.dailyDistance)}}%
+                </view>
+            </view>
+            <view class="progress-bar">
+                <view class="progress-fill" style="width: {{getProgressPercent(currentProgress.dailyDistance, goals.dailyDistance)}}%; background-color: {{getProgressColor(getProgressPercent(currentProgress.dailyDistance, goals.dailyDistance))}};"></view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="digit" placeholder="设置目标距离" value="{{goals.dailyDistance}}" data-field="dailyDistance" bindinput="onInput" />
+            </view>
+        </view>
+        <!-- 日卡路里目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">🔥</view>
+                <view class="goal-info">
+                    <view class="goal-name">日卡路里</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.dailyCalories}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.dailyCalories}}</text>
+                        <text class="unit">千卡</text>
+                    </view>
+                </view>
+                <view class="goal-percent">
+                    {{getProgressPercent(currentProgress.dailyCalories, goals.dailyCalories)}}%
+                </view>
+            </view>
+            <view class="progress-bar">
+                <view class="progress-fill" style="width: {{getProgressPercent(currentProgress.dailyCalories, goals.dailyCalories)}}%; background-color: {{getProgressColor(getProgressPercent(currentProgress.dailyCalories, goals.dailyCalories))}};"></view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="number" placeholder="设置目标卡路里" value="{{goals.dailyCalories}}" data-field="dailyCalories" bindinput="onInput" />
+            </view>
+        </view>
+        <!-- 周运动次数目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">📅</view>
+                <view class="goal-info">
+                    <view class="goal-name">周运动次数</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.weeklyWorkouts}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.weeklyWorkouts}}</text>
+                        <text class="unit">次</text>
+                    </view>
+                </view>
+                <view class="goal-percent">
+                    {{getProgressPercent(currentProgress.weeklyWorkouts, goals.weeklyWorkouts)}}%
+                </view>
+            </view>
+            <view class="progress-bar">
+                <view class="progress-fill" style="width: {{getProgressPercent(currentProgress.weeklyWorkouts, goals.weeklyWorkouts)}}%; background-color: {{getProgressColor(getProgressPercent(currentProgress.weeklyWorkouts, goals.weeklyWorkouts))}};"></view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="number" placeholder="设置周运动次数" value="{{goals.weeklyWorkouts}}" data-field="weeklyWorkouts" bindinput="onInput" />
+            </view>
+        </view>
+        <!-- 月距离目标 -->
+        <view class="goal-item">
+            <view class="goal-header">
+                <view class="goal-icon">🗓️</view>
+                <view class="goal-info">
+                    <view class="goal-name">月距离</view>
+                    <view class="goal-progress">
+                        <text class="current">{{currentProgress.monthlyDistance}}</text>
+                        <text class="separator">/</text>
+                        <text class="target">{{goals.monthlyDistance}}</text>
+                        <text class="unit">公里</text>
+                    </view>
+                </view>
+                <view class="goal-percent">
+                    {{getProgressPercent(currentProgress.monthlyDistance, goals.monthlyDistance)}}%
+                </view>
+            </view>
+            <view class="progress-bar">
+                <view class="progress-fill" style="width: {{getProgressPercent(currentProgress.monthlyDistance, goals.monthlyDistance)}}%; background-color: {{getProgressColor(getProgressPercent(currentProgress.monthlyDistance, goals.monthlyDistance))}};"></view>
+            </view>
+            <view class="goal-input" wx:if="{{editing}}">
+                <input class="input-field" type="digit" placeholder="设置月目标距离" value="{{goals.monthlyDistance}}" data-field="monthlyDistance" bindinput="onInput" />
+            </view>
+        </view>
+    </view>
+    <!-- 提示信息 -->
+    <view class="tips-section">
+        <view class="tips-title">💡 小贴士</view>
+        <view class="tips-content">
+            <view class="tip-item">• 每日步数建议：8000-12000步</view>
+            <view class="tip-item">• 每周运动3-5次，每次30-60分钟</view>
+            <view class="tip-item">• 循序渐进，不要急于求成</view>
+            <view class="tip-item">• 坚持记录，保持动力</view>
+        </view>
+    </view>
+</view>

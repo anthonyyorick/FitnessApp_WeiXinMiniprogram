@@ -1,0 +1,100 @@
+<!-- sport.wxml -->
+<view class="container">
+    <!-- 运动统计概览 -->
+    <view class="card">
+        <view class="flex-between">
+            <view class="card-title">我的运动</view>
+            <view class="text-primary" bindtap="addSport">手动记录</view>
+        </view>
+        <!-- 时间范围选择 -->
+        <view class="tab-bar">
+            <view class="tab-item {{timeRange === 'today' ? 'active' : ''}}" bindtap="switchTimeRange" data-range="today">
+                今日
+            </view>
+            <view class="tab-item {{timeRange === 'week' ? 'active' : ''}}" bindtap="switchTimeRange" data-range="week">
+                本周
+            </view>
+            <view class="tab-item {{timeRange === 'month' ? 'active' : ''}}" bindtap="switchTimeRange" data-range="month">
+                本月
+            </view>
+        </view>
+        <!-- 统计数据 -->
+        <view class="grid-4">
+            <view class="health-indicator">
+                <view class="value">{{sportStats.steps}}</view>
+                <view class="label">总步数</view>
+                <view class="unit">步</view>
+            </view>
+            <view class="health-indicator">
+                <view class="value">{{sportStats.distance}}</view>
+                <view class="label">总里程</view>
+                <view class="unit">km</view>
+            </view>
+            <view class="health-indicator">
+                <view class="value">{{sportStats.duration}}</view>
+                <view class="label">运动时长</view>
+                <view class="unit">分钟</view>
+            </view>
+            <view class="health-indicator">
+                <view class="value">{{sportStats.calories}}</view>
+                <view class="label">消耗热量</view>
+                <view class="unit">kcal</view>
+            </view>
+        </view>
+    </view>
+    <!-- 运动类型筛选 -->
+    <view class="card">
+        <view class="card-title">运动类型</view>
+        <view class="tab-bar">
+            <view class="tab-item {{sportType === 'all' ? 'active' : ''}}" bindtap="switchSportType" data-type="all">
+                全部
+            </view>
+            <view class="tab-item {{sportType === 'running' ? 'active' : ''}}" bindtap="switchSportType" data-type="running">
+                跑步
+            </view>
+            <view class="tab-item {{sportType === 'walking' ? 'active' : ''}}" bindtap="switchSportType" data-type="walking">
+                步行
+            </view>
+            <view class="tab-item {{sportType === 'cycling' ? 'active' : ''}}" bindtap="switchSportType" data-type="cycling">
+                骑行
+            </view>
+        </view>
+    </view>
+    <!-- 运动记录列表 -->
+    <view class="card">
+        <view class="card-title">运动记录</view>
+        
+        <!-- 加载状态 -->
+        <loading show="{{loading}}" text="加载中..."></loading>
+        
+        <!-- 空状态 -->
+        <view wx:if="{{sportRecords.length === 0}}" class="text-center text-secondary">暂无运动记录</view>
+        <view wx:else>
+            <view class="sport-record" wx:for="{{sportRecords}}" wx:key="id" bindtap="goToSportDetail" data-id="{{item.id}}">
+                <view class="header">
+                    <view class="type-icon">{{item.typeIcon}}</view>
+                    <view class="type-name">{{item.typeName}}</view>
+                </view>
+                <view class="data">
+                    <view class="data-item">
+                        <view class="data-value">{{item.distance}}</view>
+                        <view class="data-label">距离(km)</view>
+                    </view>
+                    <view class="data-item">
+                        <view class="data-value">{{item.duration}}</view>
+                        <view class="data-label">时长(分钟)</view>
+                    </view>
+                    <view class="data-item">
+                        <view class="data-value">{{item.calories}}</view>
+                        <view class="data-label">消耗(kcal)</view>
+                    </view>
+                </view>
+                <view class="time">{{item.startTime}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 开始运动按钮 -->
+    <view class="floating-btn" bindtap="startSport">
+        <view class="icon">+</view>
+    </view>
+</view>

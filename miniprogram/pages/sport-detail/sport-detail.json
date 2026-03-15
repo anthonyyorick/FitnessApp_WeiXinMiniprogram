@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "运动详情",
+  "usingComponents": {
+    "ec-canvas": "/components/echarts/ec-canvas/ec-canvas"
+  }
+} 

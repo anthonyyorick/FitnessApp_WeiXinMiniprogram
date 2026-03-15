@@ -1,0 +1,10 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "我的运动",
+  "usingComponents": {
+    "sport-record": "/components/sport-record/sport-record",
+    "loading": "/components/loading/loading",
+    "empty": "/components/empty/empty"
+  }
+} 

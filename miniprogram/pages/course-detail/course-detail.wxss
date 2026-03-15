@@ -1,0 +1,80 @@
+/* course-detail.wxss */
+.video-section {
+  margin-bottom: 20rpx;
+}
+.video-player {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 12rpx;
+  background: #000;
+}
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+.course-meta {
+  display: flex;
+  gap: 20rpx;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+.level {
+  color: #4caf50;
+}
+.course-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+.outline-item {
+  font-size: 26rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+.text-secondary {
+  color: #999;
+  font-size: 26rpx;
+}
+.comment-item {
+  margin-bottom: 16rpx;
+}
+.comment-user {
+  font-size: 24rpx;
+  color: #4caf50;
+  margin-bottom: 4rpx;
+}
+.comment-content {
+  font-size: 26rpx;
+  color: #333;
+}
+.comment-form {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.comment-input {
+  flex: 1;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  padding: 12rpx 20rpx;
+  font-size: 26rpx;
+  margin-right: 16rpx;
+}
+.btn-primary {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+}

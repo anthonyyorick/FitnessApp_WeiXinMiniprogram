@@ -1,0 +1,67 @@
+<!-- about/privacy-policy.wxml -->
+<view class="container">
+    <!-- 标签页切换 -->
+    <view class="tab-header">
+        <view class="tab-item {{currentTab === 'privacy' ? 'active' : ''}}" data-tab="privacy" bindtap="switchTab">
+            <view class="tab-icon">🔒</view>
+            <view class="tab-text">隐私政策</view>
+        </view>
+        <view class="tab-item {{currentTab === 'terms' ? 'active' : ''}}" data-tab="terms" bindtap="switchTab">
+            <view class="tab-icon">📋</view>
+            <view class="tab-text">用户协议</view>
+        </view>
+    </view>
+    <!-- 隐私政策内容 -->
+    <view class="content-section" wx:if="{{currentTab === 'privacy'}}">
+        <view class="content-header">
+            <view class="content-title">{{privacyContent.title}}</view>
+            <view class="content-date">最后更新：{{privacyContent.lastUpdated}}</view>
+        </view>
+        <view class="content-body">
+            <view class="policy-section" wx:for="{{privacyContent.sections}}" wx:key="title">
+                <view class="section-title">{{item.title}}</view>
+                <view class="section-content">{{item.content}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 用户协议内容 -->
+    <view class="content-section" wx:if="{{currentTab === 'terms'}}">
+        <view class="content-header">
+            <view class="content-title">{{termsContent.title}}</view>
+            <view class="content-date">最后更新：{{termsContent.lastUpdated}}</view>
+        </view>
+        <view class="content-body">
+            <view class="policy-section" wx:for="{{termsContent.sections}}" wx:key="title">
+                <view class="section-title">{{item.title}}</view>
+                <view class="section-content">{{item.content}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 联系方式 -->
+    <view class="contact-section">
+        <view class="contact-title">如有疑问，请联系我们</view>
+        <view class="contact-list">
+            <view class="contact-item" bindtap="copyEmail">
+                <view class="contact-icon">📧</view>
+                <view class="contact-info">
+                    <view class="contact-label">邮箱</view>
+                    <view class="contact-value">support@fitnessapp.com</view>
+                </view>
+                <view class="contact-action">复制</view>
+            </view>
+            <view class="contact-item" bindtap="callPhone">
+                <view class="contact-icon">📞</view>
+                <view class="contact-info">
+                    <view class="contact-label">电话</view>
+                    <view class="contact-value">400-123-4567</view>
+                </view>
+                <view class="contact-action">拨打</view>
+            </view>
+        </view>
+    </view>
+    <!-- 底部说明 -->
+    <view class="footer">
+        <view class="footer-text">使用本应用即表示您同意本隐私政策和用户协议的所有条款。</view>
+        <view class="footer-note">我们致力于保护您的隐私和权益，如有任何问题请及时联系我们。</view>
+    </view>
+</view>

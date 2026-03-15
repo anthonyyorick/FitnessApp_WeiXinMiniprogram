@@ -1,0 +1,48 @@
+<!-- sport-detail.wxml -->
+<view class="container">
+    <view class="card">
+        <view class="card-title">运动详情</view>
+        <view class="detail-row">
+            <text>类型：</text>
+            <text>{{record.typeName}}</text>
+        </view>
+        <view class="detail-row">
+            <text>距离：</text>
+            <text>{{isRunning ? distanceStr : record.distance}} km</text>
+        </view>
+        <view class="detail-row">
+            <text>时长：</text>
+            <text>{{isRunning ? durationStr : record.duration}}</text>
+        </view>
+        <view class="detail-row">
+            <text>步数：</text>
+            <text>{{record.steps}}</text>
+        </view>
+        <view class="detail-row">
+            <text>消耗：</text>
+            <text>{{record.calories}} kcal</text>
+        </view>
+        <view class="detail-row">
+            <text>开始时间：</text>
+            <text>{{record.startTime}}</text>
+        </view>
+    </view>
+    <view class="card">
+        <view class="card-title">轨迹图</view>
+        <map id="sportMap" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" polyline="{{polyline}}" style="width: 100%; height: 300rpx; border-radius: 12rpx;" show-location />
+        <view class="realtime-info" wx:if="{{isRunning}}">
+            <text>用时：{{durationStr}}</text>
+            <text>速度：{{speedStr}} km/h</text>
+            <text>距离：{{distanceStr}} km</text>
+            <text>配速：{{paceStr}}/km</text>
+        </view>
+        <view class="btn-group">
+            <button type="primary" bindtap="startSport" wx:if="{{!isRunning}}">开始运动</button>
+            <button type="warn" bindtap="stopSport" wx:if="{{isRunning}}">结束运动</button>
+        </view>
+    </view>
+    <view class="card">
+        <view class="card-title">配速分析</view>
+        <ec-canvas id="paceChart" canvas-id="paceChart" ec="{{ec}}" style="width: 100%; height: 300rpx;" />
+    </view>
+</view>

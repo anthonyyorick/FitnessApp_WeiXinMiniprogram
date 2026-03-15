@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "health-card": "/components/health-card/health-card",
+    "course-card": "/components/course-card/course-card"
+  }
+} 

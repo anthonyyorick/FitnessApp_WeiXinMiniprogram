@@ -1,0 +1,17 @@
+<!-- health-card.wxml -->
+<view class="health-card" bindtap="onTap" style="background: {{currentBackgroundColor}};">
+    <view class="icon-part">
+        <image class="health-icon" src="{{currentImageUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="card-header">
+        <view class="card-title">{{title}}</view>
+        <view class="card-subtitle" wx:if="{{subtitle}}">{{subtitle}}</view>
+    </view>
+    <view class="card-content glass-effect">
+        <view class="main-value">{{value}}</view>
+        <view class="unit" wx:if="{{unit}}">{{unit}}</view>
+    </view>
+    <view class="card-footer" wx:if="{{footer}}">
+        <view class="footer-text">{{footer}}</view>
+    </view>
+</view>

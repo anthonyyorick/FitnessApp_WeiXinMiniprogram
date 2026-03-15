@@ -1,0 +1,67 @@
+<!-- health.wxml -->
+<view class="container">
+    <!-- 健康指标选择器 -->
+    <view class="card">
+        <view class="flex-between">
+            <view class="card-title">我的健康指标</view>
+            <view class="text-primary" bindtap="addHealth">手动记录</view>
+        </view>
+        <view class="tab-bar">
+            <view class="tab-item {{healthType === 'heartRate' ? 'active' : ''}}" bindtap="switchHealthType" data-type="heartRate">
+                心率
+            </view>
+            <view class="tab-item {{healthType === 'bloodPressure' ? 'active' : ''}}" bindtap="switchHealthType" data-type="bloodPressure">
+                血压
+            </view>
+            <view class="tab-item {{healthType === 'sleep' ? 'active' : ''}}" bindtap="switchHealthType" data-type="sleep">
+                睡眠
+            </view>
+            <view class="tab-item {{healthType === 'weight' ? 'active' : ''}}" bindtap="switchHealthType" data-type="weight">
+                体重
+            </view>
+        </view>
+    </view>
+    <!-- 时间范围选择 -->
+    <view class="card">
+        <view class="card-title">时间范围</view>
+        <view class="tab-bar">
+            <view class="tab-item {{timeRange === '7days' ? 'active' : ''}}" bindtap="switchTimeRange" data-range="7days">
+                近7天
+            </view>
+            <view class="tab-item {{timeRange === '30days' ? 'active' : ''}}" bindtap="switchTimeRange" data-range="30days">
+                近30天
+            </view>
+            <view class="tab-item {{timeRange === '1year' ? 'active' : ''}}" bindtap="switchTimeRange" data-range="1year">
+                近一年
+            </view>
+        </view>
+    </view>
+    <!-- 趋势图 -->
+    <view class="chart-container">
+        <view class="card-title">趋势图</view>
+        <view class="chart-wrapper">
+            <ec-canvas id="healthChart" canvas-id="healthChart" ec="{{ec}}" class="chart-canvas"></ec-canvas>
+        </view>
+    </view>
+    <!-- 最新指标数据 -->
+    <view class="card">
+        <view class="card-title">最新数据</view>
+        <view class="health-indicator">
+            <view class="value">{{latestData.value}}</view>
+            <view class="label">最新{{healthTypeName}}</view>
+            <view class="unit">{{latestData.unit}}</view>
+            <view class="time">{{latestData.time}}</view>
+        </view>
+    </view>
+    <!-- 历史记录 -->
+    <view class="card">
+        <view class="card-title">历史记录</view>
+        <view wx:if="{{healthRecords.length === 0}}" class="text-center text-secondary">暂无记录</view>
+        <view wx:else>
+            <view class="record-item" wx:for="{{healthRecords}}" wx:key="id">
+                <view class="record-value">{{item.value}} {{item.unit}}</view>
+                <view class="record-time">{{item.time}}</view>
+            </view>
+        </view>
+    </view>
+</view>

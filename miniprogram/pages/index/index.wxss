@@ -1,0 +1,251 @@
+/* index.wxss */
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  /* padding: 30rpx; */
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.healthcard {
+  margin-bottom: 0;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20rpx;
+}
+.health-indicator {
+  text-align: center;
+  padding: 20rpx 0;
+}
+.health-indicator .value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 10rpx;
+}
+.health-indicator .label {
+  font-size: 24rpx;
+  color: #666;
+}
+.health-indicator .unit {
+  font-size: 20rpx;
+  color: #999;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-primary {
+  color: #4caf50;
+  font-size: 24rpx;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15rpx;
+}
+
+
+.quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* padding: 40rpx 20rpx; */
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  /* min-height: 160rpx; */
+}
+
+/* 运动卡片 - 蓝色渐变 */
+.sport-action {
+  display: flex;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1976d2;
+  display: flex;
+}
+
+.sport-action .icon image{
+  /* font-size: 56rpx; */
+  height: 80rpx;
+  width: 80rpx;
+  /* margin-bottom: 10rpx; */
+  /* color: #1976d2; */
+}
+
+.sport-action .text {
+  font-size: 26rpx;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.sport-action:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(25, 118, 210, 0.3);
+}
+
+/* 健康记录卡片 - 红色渐变 */
+.health-action {
+  /* background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); */
+  background-color: #A5D6A7;
+  color: #d32f2f;
+}
+
+.health-action .icon image{
+  height: 80rpx;
+  width: 80rpx;
+  margin-bottom: 10rpx;
+  }
+
+.health-action .text {
+  font-size: 26rpx;
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+.health-action:active {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 12rpx rgba(211, 47, 47, 0.3);
+}
+
+.quick-action .icon {
+  font-size: 48rpx;
+  margin-bottom: 10rpx;
+}
+
+.quick-action .text {
+  font-size: 24rpx;
+  color: #333;
+  line-height: 60rpx;
+}
+
+.course-card {
+  background: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+.course-card .cover {
+  width: 100%;
+  height: 200rpx;
+  background: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+}
+.course-card .info {
+  padding: 20rpx 10rpx 10rpx 10rpx;
+}
+.course-card .title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.course-card .duration {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.tips{
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+  padding: 30rpx;
+  margin: 20rpx;
+}
+
+.text-secondary {
+  color: #999;
+  font-size: 26rpx;
+  
+}
+
+/* 训练列表样式 */
+.course-list {
+  margin-top: 20rpx;
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.course-item:last-child {
+  border-bottom: none;
+}
+
+.course-item:active {
+  background: #f8f8f8;
+  border-radius: 8rpx;
+}
+
+.course-image {
+  width: 180rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+  background: #f0f0f0;
+}
+
+.course-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.course-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-duration {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.course-level {
+  font-size: 20rpx;
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.1);
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}

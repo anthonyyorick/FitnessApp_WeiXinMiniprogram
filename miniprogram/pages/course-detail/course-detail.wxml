@@ -1,0 +1,34 @@
+<!-- course-detail.wxml -->
+<view class="container">
+    <view class="video-section">
+        <video class="video-player" src="{{course.videoUrl}}" poster="{{course.cover}}" controls></video>
+    </view>
+    <view class="card">
+        <view class="card-title">{{course.title}}</view>
+        <view class="course-meta">
+            <text>{{course.duration}}分钟</text>
+            <text class="level">{{course.level}}</text>
+        </view>
+        <view class="course-desc">{{course.description}}</view>
+    </view>
+    <view class="card">
+        <view class="card-title">课程大纲</view>
+        <view wx:for="{{course.outline}}" wx:key="index" class="outline-item">
+            <text>{{index+1}}. {{item}}</text>
+        </view>
+    </view>
+    <view class="card">
+        <view class="card-title">评论</view>
+        <view wx:if="{{comments.length === 0}}" class="text-secondary">暂无评论</view>
+        <view wx:else>
+            <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+                <view class="comment-user">{{item.user}}</view>
+                <view class="comment-content">{{item.content}}</view>
+            </view>
+        </view>
+        <view class="comment-form">
+            <input class="comment-input" placeholder="写下你的评论..." value="{{commentInput}}" bindinput="onCommentInput" />
+            <button class="btn-primary" bindtap="submitComment">发送</button>
+        </view>
+    </view>
+</view>

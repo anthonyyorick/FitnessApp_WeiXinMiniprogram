@@ -1,0 +1,7 @@
+<!-- empty.wxml -->
+<view class="empty-container">
+    <view class="empty-icon">{{icon}}</view>
+    <view class="empty-text">{{text}}</view>
+    <view class="empty-desc" wx:if="{{desc}}">{{desc}}</view>
+    <view class="empty-action" wx:if="{{actionText}}" bindtap="onAction">{{actionText}}</view>
+</view>

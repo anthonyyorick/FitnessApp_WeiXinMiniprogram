@@ -1,0 +1,99 @@
+<view class="login-container">
+    <!-- 顶部导航 -->
+    <view class="nav-bar">
+        <view class="nav-left" bindtap="goBack">
+            <text class="nav-icon">←</text>
+        </view>
+        <view class="nav-title">{{isLogin ? '登录' : '注册'}}</view>
+        <view class="nav-right"></view>
+    </view>
+    <!-- 主要内容 -->
+    <view class="content">
+        <!-- Logo区域 -->
+        <view class="logo-section">
+            <image class="logo" src="/images/person.png" mode="aspectFit"></image>
+            <text class="app-name">MyFitnessApp</text>
+            <text class="app-desc">健康生活，从这里开始</text>
+        </view>
+        <!-- 表单切换按钮 -->
+        <view class="form-switch">
+            <view class="switch-btn {{isLogin ? 'active' : ''}}" bindtap="switchForm" data-mode="login">
+                登录
+            </view>
+            <view class="switch-btn {{!isLogin ? 'active' : ''}}" bindtap="switchForm" data-mode="register">
+                注册
+            </view>
+        </view>
+        <!-- 登录表单 -->
+        <view class="form-container" wx:if="{{isLogin}}">
+            <view class="form-item">
+                <view class="input-wrapper">
+                    <text class="input-icon">👤</text>
+                    <input class="form-input" placeholder="请输入用户名" value="{{loginForm.username}}" data-field="username" bindinput="onLoginInput" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="input-wrapper">
+                    <text class="input-icon">🔒</text>
+                    <input class="form-input" placeholder="请输入密码" password="{{!showPassword}}" value="{{loginForm.password}}" data-field="password" bindinput="onLoginInput" />
+                    <view class="password-toggle" bindtap="togglePasswordVisibility">
+                        <text class="toggle-icon">{{showPassword ? '👁️' : '👁️‍🗨️'}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="form-actions">
+                <text class="forgot-password" bindtap="handleForgotPassword">忘记密码？</text>
+            </view>
+            <button class="submit-btn login-btn" bindtap="handleLogin" loading="{{loading}}" disabled="{{loading}}">
+                {{loading ? '登录中...' : '登录'}}
+            </button>
+            <!-- 其他登录方式 -->
+            <view class="other-login">
+                <view class="divider">
+                    <text class="divider-text">或</text>
+                </view>
+                <button class="wechat-btn" bindtap="handleWechatLogin">
+                    <text class="wechat-icon">💬</text>
+                    <text class="wechat-text">微信登录</text>
+                </button>
+            </view>
+        </view>
+        <!-- 注册表单 -->
+        <view class="form-container" wx:if="{{!isLogin}}">
+            <view class="form-item">
+                <view class="input-wrapper">
+                    <text class="input-icon">👤</text>
+                    <input class="form-input" placeholder="请输入用户名（至少3位）" value="{{registerForm.username}}" data-field="username" bindinput="onRegisterInput" />
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="input-wrapper">
+                    <text class="input-icon">🔒</text>
+                    <input class="form-input" placeholder="请输入密码（至少6位）" password="{{!showPassword}}" value="{{registerForm.password}}" data-field="password" bindinput="onRegisterInput" />
+                    <view class="password-toggle" bindtap="togglePasswordVisibility">
+                        <text class="toggle-icon">{{showPassword ? '👁️' : '👁️‍🗨️'}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="input-wrapper">
+                    <text class="input-icon">🔒</text>
+                    <input class="form-input" placeholder="请确认密码" password="{{!showConfirmPassword}}" value="{{registerForm.confirmPassword}}" data-field="confirmPassword" bindinput="onRegisterInput" />
+                    <view class="password-toggle" bindtap="toggleConfirmPasswordVisibility">
+                        <text class="toggle-icon">{{showConfirmPassword ? '👁️' : '👁️‍🗨️'}}</text>
+                    </view>
+                </view>
+            </view>
+            <button class="submit-btn register-btn" bindtap="handleRegister" loading="{{loading}}" disabled="{{loading}}">
+                {{loading ? '注册中...' : '注册'}}
+            </button>
+        </view>
+        <!-- 底部提示 -->
+        <view class="bottom-tips">
+            <text class="tips-text">
+                {{isLogin ? '还没有账号？' : '已有账号？'}}
+                <text class="link-text" bindtap="switchForm">{{isLogin ? '立即注册' : '立即登录'}}</text>
+            </text>
+        </view>
+    </view>
+</view>

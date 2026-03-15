@@ -1,0 +1,42 @@
+/* empty.wxss */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 40rpx;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.6;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 40rpx;
+  line-height: 1.5;
+}
+
+.empty-action {
+  background: #4caf50;
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  transition: all 0.3s ease;
+}
+
+.empty-action:active {
+  transform: scale(0.95);
+  background: #45a049;
+}

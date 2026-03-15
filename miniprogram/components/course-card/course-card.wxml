@@ -1,0 +1,14 @@
+<!-- course-card.wxml -->
+<view class="course-card" bindtap="onTap">
+    <view class="course-cover" style="background-image: url({{cover}});">
+        <view class="course-level" wx:if="{{level}}">{{level}}</view>
+    </view>
+    <view class="course-info">
+        <view class="course-title">{{title}}</view>
+        <view class="course-desc" wx:if="{{description}}">{{description}}</view>
+        <view class="course-meta">
+            <view class="course-duration">{{duration}}分钟</view>
+            <view class="course-views" wx:if="{{views}}">{{views}}人观看</view>
+        </view>
+    </view>
+</view>

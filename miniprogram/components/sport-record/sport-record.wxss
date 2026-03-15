@@ -1,0 +1,91 @@
+/* sport-record.wxss */
+.sport-record {
+  background: linear-gradient(135deg, #ffe0b2 0%, #ffcc80 100%);
+  border-radius: 18rpx;
+  padding: 36rpx 30rpx 30rpx 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 204, 128, 0.6);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+}
+
+.sport-record:active {
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 12rpx rgba(255, 204, 128, 0.7);
+}
+
+.sport-icon {
+  width: 56rpx;
+  height: 56rpx;
+  position: absolute;
+  left: 32rpx;
+  top: 32rpx;
+  opacity: 0.85;
+}
+
+.record-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-left: 72rpx;
+}
+
+.type-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+  font-size: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-name {
+  flex: 1;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #d84315;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #ef6c00;
+}
+
+.record-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 16rpx;
+}
+
+.data-item {
+  text-align: center;
+}
+
+.data-value {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #f57c00;
+}
+
+.data-label {
+  font-size: 24rpx;
+  color: #e65100;
+  margin-top: 5rpx;
+}
+
+.record-footer {
+  text-align: right;
+}
+
+.steps {
+  font-size: 24rpx;
+  color: #fb8c00;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(8rpx);
+}

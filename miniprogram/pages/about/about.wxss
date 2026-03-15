@@ -1,0 +1,246 @@
+/* about/about.wxss */
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  padding: 60rpx 0;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  color: white;
+}
+
+.app-logo {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.app-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+
+.app-version {
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.section {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  border-left: 6rpx solid #4caf50;
+  padding-left: 20rpx;
+}
+
+.description {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  padding: 15rpx 0;
+}
+
+.feature-icon {
+  font-size: 32rpx;
+  color: #4caf50;
+  margin-right: 20rpx;
+  width: 40rpx;
+  text-align: center;
+}
+
+.feature-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.team-info {
+  margin-bottom: 30rpx;
+}
+
+.team-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.team-description {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.team-members {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15rpx;
+}
+
+.member-item {
+  background: #f8f9fa;
+  padding: 15rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+
+.member-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.member-role {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.contact-item:active {
+  background: #e9ecef;
+  transform: scale(0.98);
+}
+
+.contact-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+  text-align: center;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-label {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.contact-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.contact-action {
+  font-size: 26rpx;
+  color: #4caf50;
+  font-weight: 600;
+  padding: 8rpx 16rpx;
+  background: #e8f5e8;
+  border-radius: 6rpx;
+}
+
+.share-content {
+  text-align: center;
+}
+
+.share-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.3);
+}
+
+.share-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(76, 175, 80, 0.3);
+}
+
+.share-icon {
+  font-size: 32rpx;
+}
+
+.footer {
+  text-align: center;
+  padding: 40rpx 0;
+  color: #999;
+}
+
+.copyright {
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+}
+
+.powered-by {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+  .container {
+    padding: 15rpx;
+  }
+
+  .section {
+    padding: 20rpx;
+  }
+
+  .team-members {
+    grid-template-columns: 1fr;
+  }
+
+  .app-logo {
+    font-size: 60rpx;
+  }
+
+  .app-name {
+    font-size: 32rpx;
+  }
+}

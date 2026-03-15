@@ -1,0 +1,117 @@
+<!-- add-sport.wxml -->
+<view class="container">
+    <form bindsubmit="submitSportRecord">
+        <!-- 运动类型选择 -->
+        <view class="section">
+            <view class="section-title">运动类型</view>
+            <view class="sport-types">
+                <view class="sport-type-item {{selectedType === item.value ? 'active' : ''}}" wx:for="{{sportTypes}}" wx:key="value" data-type="{{item.value}}" bindtap="selectSportType">
+                    <view class="sport-icon">{{item.icon}}</view>
+                    <view class="sport-name">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+        <!-- 基本信息 -->
+        <view class="section">
+            <view class="section-title">基本信息</view>
+            <view class="form-group">
+                <view class="form-label">距离 (公里)</view>
+                <input class="form-input" type="digit" placeholder="请输入距离" value="{{distance}}" bindinput="onDistanceInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">步数</view>
+                <input class="form-input" type="number" placeholder="请输入步数" value="{{steps}}" bindinput="onStepsInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">消耗卡路里</view>
+                <input class="form-input" type="number" placeholder="请输入卡路里" value="{{calories}}" bindinput="onCaloriesInput" />
+            </view>
+        </view>
+        <!-- 时间信息 -->
+        <view class="section">
+            <view class="section-title">时间信息</view>
+            <view class="form-group">
+                <view class="form-label">记录日期</view>
+                <picker mode="date" value="{{recordDate}}" bindchange="onRecordDateChange">
+                    <view class="picker-value">{{recordDate || '选择日期'}}</view>
+                </picker>
+            </view>
+            <view class="form-group">
+                <view class="form-label">记录时间</view>
+                <picker mode="time" value="{{recordTime}}" bindchange="onRecordTimeChange">
+                    <view class="picker-value">{{recordTime || '选择时间'}}</view>
+                </picker>
+            </view>
+            <view class="form-group">
+                <view class="form-label">运动时长</view>
+                <view class="duration-input-group">
+                    <input class="duration-input" type="number" placeholder="时" value="{{durationHours}}" bindinput="onDurationHoursInput" />
+                    <text class="duration-separator">:</text>
+                    <input class="duration-input" type="number" placeholder="分" value="{{durationMinutes}}" bindinput="onDurationMinutesInput" />
+                    <text class="duration-separator">:</text>
+                    <input class="duration-input" type="number" placeholder="秒" value="{{durationSeconds}}" bindinput="onDurationSecondsInput" />
+                </view>
+                <view class="duration-display">
+                    <text class="duration-label">总时长：</text>
+                    <text class="duration-value">{{formattedDuration}}</text>
+                </view>
+                <view class="input-tip">格式：时:分:秒，如：1:30:45</view>
+            </view>
+        </view>
+        <!-- 高级信息 -->
+        <!-- <view class="section">
+            <view class="section-title">高级信息 (可选)</view>
+            <view class="form-group">
+                <view class="form-label">备注</view>
+                <textarea class="form-textarea" placeholder="添加运动备注..." value="{{notes}}" bindinput="onNotesInput" maxlength="500"></textarea>
+            </view>
+            <view class="form-group">
+                <view class="form-label">天气温度 (°C)</view>
+                <input class="form-input" type="digit" placeholder="请输入温度" value="{{weather.temperature}}" bindinput="onTemperatureInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">天气状况</view>
+                <input class="form-input" placeholder="如：晴天、阴天、小雨等" value="{{weather.condition}}" bindinput="onWeatherConditionInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">平均心率 (bpm)</view>
+                <input class="form-input" type="number" placeholder="请输入平均心率" value="{{heartRate.avg}}" bindinput="onAvgHeartRateInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">最大心率 (bpm)</view>
+                <input class="form-input" type="number" placeholder="请输入最大心率" value="{{heartRate.max}}" bindinput="onMaxHeartRateInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">最小心率 (bpm)</view>
+                <input class="form-input" type="number" placeholder="请输入最小心率" value="{{heartRate.min}}" bindinput="onMinHeartRateInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">平均配速 (分钟/公里)</view>
+                <input class="form-input" type="digit" placeholder="请输入平均配速" value="{{pace.avg}}" bindinput="onAvgPaceInput" />
+            </view>
+            <view class="form-group">
+                <view class="form-label">最佳配速 (分钟/公里)</view>
+                <input class="form-input" type="digit" placeholder="请输入最佳配速" value="{{pace.best}}" bindinput="onBestPaceInput" />
+            </view>
+        </view> -->
+        <!-- 位置信息 -->
+        <view class="section" wx:if="{{location}}">
+            <view class="section-title">位置信息</view>
+            <view class="location-info">
+                <view class="location-text">{{location.address || '当前位置'}}</view>
+                <view class="location-coords">
+                    纬度: {{location.latitude}}, 经度: {{location.longitude}}
+                </view>
+            </view>
+        </view>
+        <!-- 操作按钮 -->
+        <view class="action-buttons">
+            <button class="btn btn-secondary" bindtap="resetForm" disabled="{{submitting}}">
+                重置
+            </button>
+            <button class="btn btn-primary" form-type="submit" loading="{{submitting}}" disabled="{{submitting}}">
+                {{submitting ? '提交中...' : '保存记录'}}
+            </button>
+        </view>
+    </form>
+</view>

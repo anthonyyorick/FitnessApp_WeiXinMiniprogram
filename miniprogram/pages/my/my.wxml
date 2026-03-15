@@ -1,0 +1,101 @@
+<!-- my.wxml -->
+<view class="container">
+    <!-- 用户信息 -->
+    <view class="user-info">
+        <image class="avatar" src="{{userInfo.avatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="info">
+            <view class="nickname">{{userInfo.username || '健身小白'}}</view>
+            <view class="signature">
+                {{userInfo.level || '初级'}} · 加入{{userInfo.joinDays || 1}}天
+            </view>
+        </view>
+        <!-- 登录按钮 -->
+        <view class="login-btn" wx:if="{{!userInfo.username}}" bindtap="goToLogin">立即登录</view>
+        <!-- 编辑按钮 -->
+        <view class="edit-btn" wx:if="{{userInfo.username}}" bindtap="editProfile">
+            <text class="edit-icon">✏️</text>
+        </view>
+    </view>
+    <!-- 我的数据 -->
+    <view class="card" wx:if="{{userInfo.username}}">
+        <view class="card-title">我的目标</view>
+        <!-- <view class="data-grid">
+            <view class="data-item">
+                <view class="data-value">{{userInfo.totalSteps || 156789}}</view>
+                <view class="data-label">总步数</view>
+            </view>
+            <view class="data-item">
+                <view class="data-value">{{userInfo.totalDistance || 118.2}}</view>
+                <view class="data-label">总里程(km)</view>
+            </view>
+            <view class="data-item">
+                <view class="data-value">{{userInfo.totalCalories || 6450}}</view>
+                <view class="data-label">总消耗(kcal)</view>
+            </view>
+        </view> -->
+        <view class="menu-list">
+            <view class="menu-item" bindtap="goToSportGoals">
+                <view class="icon">🎯</view>
+                <view class="text">运动目标</view>
+                <view class="arrow">></view>
+            </view>
+            <view class="menu-item" bindtap="goToHealthGoals">
+                <view class="icon">📊</view>
+                <view class="text">健康目标</view>
+                <view class="arrow">></view>
+            </view>
+        </view>
+    </view>
+    <!-- 应用设置 -->
+    <!-- <view class="card" wx:if="{{userInfo.username}}">
+        <view class="card-title">应用设置</view>
+        <view class="menu-list">
+            <view class="menu-item" bindtap="goToNotifications">
+                <view class="icon">🔔</view>
+                <view class="text">通知管理</view>
+                <view class="arrow">></view>
+            </view>
+            <view class="menu-item" bindtap="goToUnits">
+                <view class="icon">📏</view>
+                <view class="text">单位设置</view>
+                <view class="arrow">></view>
+            </view>
+            <view class="menu-item" bindtap="goToPrivacy">
+                <view class="icon">🔒</view>
+                <view class="text">隐私设置</view>
+                <view class="arrow">></view>
+            </view>
+        </view>
+    </view> -->
+    <!-- 关于与帮助 -->
+    <view class="card">
+        <view class="card-title">关于与帮助</view>
+        <view class="menu-list">
+            <view class="menu-item" bindtap="goToAbout">
+                <view class="icon">ℹ️</view>
+                <view class="text">关于我们</view>
+                <view class="arrow">></view>
+            </view>
+            <view class="menu-item" bindtap="goToHelp">
+                <view class="icon">❓</view>
+                <view class="text">帮助与反馈</view>
+                <view class="arrow">></view>
+            </view>
+            <view class="menu-item" bindtap="goToPrivacyPolicy">
+                <view class="icon">📄</view>
+                <view class="text">用户协议与隐私政策</view>
+                <view class="arrow">></view>
+            </view>
+        </view>
+    </view>
+    <!-- 退出登录 -->
+    <view class="card" wx:if="{{userInfo.username}}">
+        <view class="menu-list">
+            <view class="menu-item" bindtap="logout">
+                <view class="icon">🚪</view>
+                <view class="text">退出登录</view>
+                <view class="arrow">></view>
+            </view>
+        </view>
+    </view>
+</view>

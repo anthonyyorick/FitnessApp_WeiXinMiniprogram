@@ -1,0 +1,176 @@
+/* my.wxss */
+.container {
+  padding: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 30rpx;
+}
+
+.info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.signature {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 数据网格 */
+.data-grid {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 20rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12rpx;
+  margin: 20rpx;
+}
+
+.data-item {
+  text-align: center;
+  color: #fff;
+}
+
+.data-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.data-label {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+/* 登录按钮 */
+.login-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  padding: 16rpx 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  min-width: 120rpx;
+  height: 60rpx;
+  line-height: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.login-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.3);
+  opacity: 0.8;
+}
+
+/* 编辑按钮 */
+.edit-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:active {
+  background: rgba(102, 126, 234, 0.2);
+  transform: scale(0.95);
+}
+
+.edit-icon {
+  font-size: 24rpx;
+}
+
+/* 测试按钮 */
+.test-section {
+  margin-bottom: 20rpx;
+}
+
+.test-btn {
+  width: 100%;
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 107, 0.3);
+}
+
+.test-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(255, 107, 107, 0.3);
+}
+
+.card {
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.menu-list {
+  padding: 0 20rpx;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  margin-right: 20rpx;
+  font-size: 36rpx;
+}
+
+.text {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.arrow {
+  color: #999;
+  font-size: 28rpx;
+}

@@ -1,0 +1,44 @@
+<!-- course.wxml -->
+<view class="container">
+    <!-- 搜索栏 -->
+    <view class="search-bar">
+        <input class="search-input" placeholder="搜索课程" value="{{searchKey}}" bindinput="onSearchInput" bindconfirm="search" />
+        <view class="search-btn" bindtap="search">搜索</view>
+    </view>
+    <!-- 分类筛选 -->
+    <view class="card">
+        <view class="card-title">课程分类</view>
+        <view class="tab-bar">
+            <view class="tab-item {{category === 'all' ? 'active' : ''}}" bindtap="switchCategory" data-category="all">
+                全部
+            </view>
+            <view class="tab-item {{category === 'running' ? 'active' : ''}}" bindtap="switchCategory" data-category="running">
+                跑步
+            </view>
+            <view class="tab-item {{category === 'yoga' ? 'active' : ''}}" bindtap="switchCategory" data-category="yoga">
+                瑜伽
+            </view>
+            <view class="tab-item {{category === 'strength' ? 'active' : ''}}" bindtap="switchCategory" data-category="strength">
+                力量
+            </view>
+        </view>
+    </view>
+    <!-- 课程列表 -->
+    <view class="card">
+        <view class="card-title">课程列表</view>
+        <view wx:if="{{courses.length === 0}}" class="text-center text-secondary">暂无课程</view>
+        <view wx:else>
+            <view class="course-item" wx:for="{{courses}}" wx:key="id" bindtap="goToCourseDetail" data-id="{{item.id}}">
+                <image class="course-cover" src="{{item.cover}}" mode="aspectFill"></image>
+                <view class="course-info">
+                    <view class="course-title">{{item.title}}</view>
+                    <view class="course-desc">{{item.description}}</view>
+                    <view class="course-meta">
+                        <view class="course-duration">{{item.duration}}分钟</view>
+                        <view class="course-level">{{item.level}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

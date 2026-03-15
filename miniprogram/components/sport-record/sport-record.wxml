@@ -1,0 +1,26 @@
+<!-- sport-record.wxml -->
+<view class="sport-record" bindtap="onTap">
+    <image class="sport-icon" src="/images/figure_running1.png" mode="aspectFit"></image>
+    <view class="record-header">
+        <view class="type-icon">{{typeIcon}}</view>
+        <view class="type-name">{{typeName}}</view>
+        <view class="record-time">{{time}}</view>
+    </view>
+    <view class="record-data glass-effect">
+        <view class="data-item">
+            <view class="data-value">{{distance}}</view>
+            <view class="data-label">距离(km)</view>
+        </view>
+        <view class="data-item">
+            <view class="data-value">{{duration}}</view>
+            <view class="data-label">时长(分钟)</view>
+        </view>
+        <view class="data-item">
+            <view class="data-value">{{calories}}</view>
+            <view class="data-label">消耗(kcal)</view>
+        </view>
+    </view>
+    <view class="record-footer" wx:if="{{steps}}">
+        <view class="steps">步数: {{steps}}</view>
+    </view>
+</view>
